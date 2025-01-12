@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTELLIAIPRO - Online Intelligence Agency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Previous styles remain the same */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #2c3e50;
+            --light-bg: #f8f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Updated Hero Section */
+        .hero {
+            padding: 8rem 5% 4rem;
+            background: #1a1a1a;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            color: white;
+            z-index: 2;
+        }
+
+        #network-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .node {
+            fill: rgba(255, 50, 50, 0.8);
+            transition: r 0.3s ease;
+        }
+
+        .link {
+            stroke: rgba(255, 50, 50, 0.3);
+            stroke-width: 1;
+        }
+
+        /* Rest of the previous styles remain the same */
+        /* Service Cards */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: -100px auto 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: var(--text-color);
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            border-image: linear-gradient(45deg, var(--accent-color), #ff0000) 1;
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 0.5s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card:hover::before {
+            clip-path: inset(0 0 0 0);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 4rem 5%;
+            background-color: var(--light-bg);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 2rem;
+        }
+
+        form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            nav {
+                margin-top: 1rem;
+            }
+
+            nav a {
+                margin: 0 1rem;
+            }
+
+            .hero {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .services {
+                padding: 0 1rem;
+                margin-top: -50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">INTELLIAIPRO</a>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <svg id="network-animation"></svg>
+        <h1>Welcome to INTELLIAIPRO</h1>
+        <p>Your trusted partner in online intelligence and OSINT solutions. We provide professional services with cutting-edge technology and expert analysis.</p>
+    </section>
+
+    <!-- Rest of the HTML remains the same -->
+    <div class="services" id="services">
+        <a href="/consultation" class="service-card">
+            <i class="fas fa-comments"></i>
+            <h3>Free Consultation</h3>
+            <p>Schedule a no-obligation consultation with our experts</p>
+        </a>
+        <a href="/services" class="service-card">
+            <i class="fas fa-laptop-code"></i>
+            <h3>What We Do</h3>
+            <p>Explore our comprehensive OSINT services</p>
+        </a>
+        <a href="/experience" class="service-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Experience</h3>
+            <p>Learn about our expertise and success stories</p>
+        </a>
+        <a href="/community" class="service-card">
+            <i class="fas fa-hands-helping"></i>
+            <h3>Community Support</h3>
+            <p>Discover how we give back to the community</p>
+        </a>
+    </div>
+
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <h2>Contact Us</h2>
+            <form name="contact" method="POST" data-netlify="true">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>INTELLIAIPRO</h3>
+                <p>Professional Online Intelligence Agency</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@intelliaipro.com</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script>
+        // Network Animation
+        const svg = d3.select('#network-animation');
+        const width = svg.node().parentNode.clientWidth;
+        const height = svg.node().parentNode.clientHeight;
+        svg.attr('width', width).attr('height', height);
+
+        // Create nodes and links
+        const nodes = [];
+        const links = [];
+        const numNodes = 30;
+        const numLinks = 40;
+
+        // Create central node
+        nodes.push({
+            id: 0,
+            x: width / 2,
+            y: height / 2,
+            radius: 8
+        });
+
+        // Create satellite nodes
+        for (let i = 1; i < numNodes; i++) {
+            const angle = (i / numNodes) * 2 * Math.PI;
+            const radius = Math.random() * (width / 3) + 100;
+            nodes.push({
+                id: i,
+                x: width / 2 + radius * Math.cos(angle),
+                y: height / 2 + radius * Math.sin(angle),
+                radius: Math.random() * 3 + 2
+            });
+        }
+
+        // Create links
+        for (let i = 0; i < numLinks; i++) {
+            const source = Math.floor(Math.random() * numNodes);
+            const target = Math.floor(Math.random() * numNodes);
+            if (source !== target) {
+                links.push({ source, target });
+            }
+        }
+
+        // Create the simulation
+        const simulation = d3.forceSimulation(nodes)
+            .force('link', d3.forceLink(links).distance(100))
+            .force('charge', d3.forceManyBody().strength(-50))
+            .force('center', d3.forceCenter(width / 2, height / 2))
+            .force('collision', d3.forceCollide().radius(d => d.radius + 5));
+
+        // Draw the links
+        const link = svg.selectAll('.link')
+            .data(links)
+            .enter()
+            .append('line')
+            .attr('class', 'link');
+
+        // Draw the nodes
+        const node = svg.selectAll('.node')
+            .data(nodes)
+            .enter()
+            .append('circle')
+            .attr('class', 'node')
+            .attr('r', d => d.radius);
+
+        // Animation update
+        simulation.on('tick', () => {
+            link
+                .attr('x1', d => d.source.x)
+                .attr('y1', d => d.source.y)
+                .attr('x2', d => d.target.x)
+                .attr('y2', d => d.target.y);
+
+            node
+                .attr('cx', d => d.x)
+                .attr('cy', d => d.y);
+        });
+
+        // Add pulsing animation to nodes
+        function pulseNodes() {
+            node.transition()
+                .duration(1500)
+                .attr('r', d => d.radius * 1.3)
+                .transition()
+                .duration(1500)
+                .attr('r', d => d.radius)
+                .on('end', pulseNodes);
+        }
+
+        pulseNodes();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            const width = svg.node().parentNode.clientWidth;
+            const height = svg.node().parentNode.clientHeight;
+            svg.attr('width', width).attr('height', height);
+            simulation.force('center', d3.forceCenter(width / 2, height / 2));
+            simulation.alpha(1).restart();
+        });
+    </script>
+</body>
+</html>
